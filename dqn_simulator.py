@@ -2,8 +2,7 @@
 from __future__ import print_function
 
 import argparse
-# sys.path.append("game/")
-# import wrapped_flappy_bird as game
+
 import random
 import threading
 from collections import deque
@@ -25,10 +24,10 @@ app = Flask(__name__)
 model = None
 prev_image_array = None
 
-GAME = 'bird'
-# the name of the game being played for log files
+GAME = 'car'
+
 ACTIONS = 2
-# number of valid actions
+
 GAMMA = 0.99  # decay rate of past observations
 OBSERVE = 1000.  # timesteps to observe before training
 EXPLORE = 3000000.  # frames over which to anneal epsilon
