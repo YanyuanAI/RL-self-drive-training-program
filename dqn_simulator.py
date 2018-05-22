@@ -203,8 +203,8 @@ def trainNetwork(s, readout, h_fc1, sess):
         global time_tem
         time_dqn=time.time()        #等待时间更新***************************************************
         time_tem=time_dqn
-        print("更新t1 前面")
-        print(time_dqn)
+        #print("更新t1 前面")
+        #print(time_dqn)
         '''x_t1_colored= cv2.imread("c:/MainCamera.png")
         r_t=reward
         x_t1 = cv2.cvtColor(cv2.resize(x_t1_colored, (80, 80)), cv2.COLOR_BGR2GRAY)
@@ -256,8 +256,8 @@ def trainNetwork(s, readout, h_fc1, sess):
             )
         global time_dqn
         time_dqn = time.time()  # 等待时间更新s_t1**********************************
-        print("更新t1 后面")
-        print(time_dqn)
+        #print("更新t1 后面")
+        #print(time_dqn)
 
         # update the old values
         global s_t
@@ -317,7 +317,7 @@ controller.set_desired(set_speed)
 
 @sio.on('telemetry')
 def telemetry(sid, data):
-    print("telemetryyyyyyyyyyyyyyyyyyyyyyy")
+    #print("telemetryyyyyyyyyyyyyyyyyyyyyyy")
     if data:
         global time_skt
         time_skt=time.time()
@@ -365,12 +365,12 @@ def telemetry(sid, data):
           #s_t1 = np.append(x_t1, s_t[:,:,1:], axis = 2)
           #print (s_t.shape)
           s_t1 = np.append(x_t1, s_t[:, :, :3], axis=2)'''
-    print("11111111111111111111111111111111")
+    #print("11111111111111111111111111111111")
     print(time_dqn)
     print(time_tem)
     while (time_dqn == time_tem):
         r = 1
-    print("2222222222222222222222222222222")
+    #print("2222222222222222222222222222222")
     global steering_angle,throttle
     send_control(steering_angle, throttle)
     print("telemetry")
@@ -401,7 +401,7 @@ def send_control(steering_angle, throttle):
             'throttle': throttle.__str__()
         },
         skip_sid=True)
-    print("senddddddddddddddddddddddddddd")
+    #print("senddddddddddddddddddddddddddd")
     print(steering_angle)
     print(throttle)
 def send_start():
@@ -424,7 +424,7 @@ def loop():
     trainNetwork(s, readout, h_fc1, sess)
     print('thread %s ended.')
 def loop2(app):
-    print("dddddddddddddddddddddddd")
+    #print("dddddddddddddddddddddddd")
     app = socketio.Middleware(sio, app)
     # deploy as an eventlet WSGI server
     eventlet.wsgi.server(eventlet.listen(('', 4567)), app)
